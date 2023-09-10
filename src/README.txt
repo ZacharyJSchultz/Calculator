@@ -1,3 +1,3 @@
-Note: This is an old project that I made a couple years back that I just recently uploaded to GitHub. Because of that, it isn't completely finished, but it still works.
+Note: This is an old project that I made a couple years back that I just recently uploaded to GitHub. Because of that, it isn't completely finished, but it is still perfectly functional.
 
 This is a calculator that is still in development. I originally got it working a couple years back, but wanted more functionality, so I added buttons for square root, parenthesis, negative numbers, etc. and implemented keyboard input. The buttons and keyboard inputs work individually, but sometimes the switch in focus leads to problems with the JTextArea not updating. To fix it, I'll have to introduce threads and think about the focus of the program. I also haven't finished implementing square root or the parenthesis, and there are a few bugs to iron out.
