@@ -1,4 +1,9 @@
-package com.Zach.Calculator;
+/*
+ * This is the Window class, which creates the JFrame and initializes all the buttons.
+ * Mostly just changes a bunch of button settings then displays the Window.
+ */
+
+package calculator;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -12,8 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import com.Zach.Listeners.ButtonPressed;
-import com.Zach.Listeners.KeyInput;
+import listeners.ButtonPressed;
+import listeners.KeyInput;
 
 public class Window extends Canvas
 {
@@ -57,7 +62,8 @@ public class Window extends Canvas
 		GridBagConstraints gbc = new GridBagConstraints();
 		
 		gbc.insets = new Insets(7, 7, 7, 7);
-	
+		
+		// Instantiates the buttons
 		zero = new JButton("0");
 		one = new JButton("1");
 		two = new JButton("2");
@@ -70,7 +76,7 @@ public class Window extends Canvas
 		nine = new JButton("9");
 		plus = new JButton("+");
 		minus = new JButton("-");
-		times = new JButton("x");
+		times = new JButton("*");
 		divide = new JButton("/");
 		sqrt = new JButton("sqrt");
 		negative = new JButton("(-)");
@@ -84,6 +90,7 @@ public class Window extends Canvas
 		
 		Dimension d = new Dimension(60, 60);
 		
+		// Sets all buttons dimensions
 		zero.setPreferredSize(d);
 		one.setPreferredSize(d);
 		two.setPreferredSize(d);
@@ -108,6 +115,7 @@ public class Window extends Canvas
 		rParenth.setPreferredSize(d);
 		Pi.setPreferredSize(d);
 		
+		// Changes buttons focusability
 		zero.setFocusable(false);
 		one.setFocusable(false);
 		two.setFocusable(false);
@@ -137,6 +145,7 @@ public class Window extends Canvas
 		ansText.setEditable(false);
 		ansText.setVisible(true);
 		
+		// Adds listeners from the ButtonPressed class to each Button
 		zero.addActionListener(new ButtonPressed());
 		one.addActionListener(new ButtonPressed());
 		two.addActionListener(new ButtonPressed());
@@ -161,6 +170,7 @@ public class Window extends Canvas
 		rParenth.addActionListener(new ButtonPressed());
 		Pi.addActionListener(new ButtonPressed());
 		
+		// Adds the buttons to the frame
 		gbc.gridx = 10;
 		gbc.gridy = 40;
 		buttons.add(zero, gbc);
@@ -249,7 +259,7 @@ public class Window extends Canvas
 		
 		frame.setFocusable(true);
 	    frame.requestFocus();
-		frame.addKeyListener(new KeyInput());
+		frame.addKeyListener(new KeyInput());	//Adds the KeyListener I created to the frame
 	}
 	
 	public static void close() {

@@ -1,10 +1,16 @@
-package com.Zach.Listeners;
+/*
+ * This is the ButtonPressed class, which is basically the KeyInput class 
+ * but for the buttons. It controls what happens if you click each button,
+ * which I manually specify in the below functions.
+ */
+
+package listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.Zach.Calculator.Calculator;
-import com.Zach.Calculator.Window;
+import calculator.Calculator;
+import calculator.Window;
 
 public class ButtonPressed implements ActionListener
 {
@@ -12,8 +18,9 @@ public class ButtonPressed implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource() == Window.zero)
+		if(e.getSource() == Window.zero)	// If the button pressed is Zero
 		{
+			// If there is no operation append to numI, else append to numII
 			if(Calculator.operation == "") Calculator.numI += "0";
 			else Calculator.numII += "0";
 			
@@ -38,7 +45,7 @@ public class ButtonPressed implements ActionListener
 			if(Calculator.operation == "") Calculator.numI += "3";
 			else Calculator.numII += "3";
 			
-			Window.ansText.append(Window.ansText.getText() + "3");
+			Window.ansText.append("3");
 		}
 		else if(e.getSource() == Window.four)
 		{
@@ -52,7 +59,7 @@ public class ButtonPressed implements ActionListener
 			if(Calculator.operation == "") Calculator.numI += "5";
 			else Calculator.numII += "5";
 			
-			Window.ansText.append(Window.ansText.getText() + "5");
+			Window.ansText.append("5");
 		}
 		else if(e.getSource() == Window.six)
 		{
@@ -84,66 +91,69 @@ public class ButtonPressed implements ActionListener
 		}
 		else if(e.getSource() == Window.plus)
 		{
+			// If there is no number entered throw an error
 			if(Calculator.numI == "")
-			{
-				Calculator.operation = "";
 				throw new Error("Please enter an argument!");
-			}
 			else
 			{
-				Calculator.operation = "+";
+				if(!Calculator.operation.equals(""))
+					Calculator.switchOp("+");		// Switch operation if already set
+				else {
+					Calculator.operation = "+";
+					Window.ansText.setText(Window.ansText.getText() + " + ");	// Adds text to answer area
+				}
 			}
-			if(Calculator.sqrt)
-				Window.ansText.append(")");
-			
-			Window.ansText.append(" + ");
 		}
 		else if(e.getSource() == Window.minus)
 		{
 			if(Calculator.numI == "")
-			{
 				throw new Error("Please enter an argument!");
-			}
 			else
 			{
-				Calculator.operation = "-";
+				if(!Calculator.operation.equals(""))
+					Calculator.switchOp("-");
+				else {
+					Calculator.operation = "-";
+					Window.ansText.setText(Window.ansText.getText() + " - ");
+				}
 			}
-			
-			Window.ansText.append(" - ");
 		}
 		else if(e.getSource() == Window.times)
 		{
 			if(Calculator.numI == "")
-			{
 				throw new Error("Please enter an argument!");
-			}
 			else
 			{
-				Calculator.operation = "x";
+				if(!Calculator.operation.equals(""))
+					Calculator.switchOp("*");
+				else {
+					Calculator.operation = "*";
+					Window.ansText.setText(Window.ansText.getText() + " * ");
+				}
 			}
-			
-			Window.ansText.append(" * ");
 		}
 		else if(e.getSource() == Window.divide)
 		{
 			if(Calculator.numI == "")
-			{
 				throw new Error("Please enter an argument!");
-			}
 			else
 			{
-				Calculator.operation = "/";
+				if(!Calculator.operation.equals(""))
+					Calculator.switchOp("/");
+				else {
+					Calculator.operation = "/";
+					Window.ansText.setText(Window.ansText.getText() + " / ");
+				}
 			}
-			
-			Window.ansText.append(" / ");
 		}
 		else if(e.getSource() == Window.negative)
 		{
+			// If no operation, num1 should be turned negative
 			if(Calculator.operation == "") {
 				Calculator.numI = "-" + Calculator.numI;
 				Window.ansText.setText("-" + Window.ansText.getText());
 			}
-			
+			// If there is an operation, numII shuold be turned negative
 			else {
 				Calculator.numII = "-" + Calculator.numII;
 				Window.ansText.insert("-", Window.ansText.getText().indexOf(Calculator.numII));
@@ -157,6 +167,7 @@ public class ButtonPressed implements ActionListener
 		}
 		else if(e.getSource() == Window.decimal)
 		{
+			// Surprisingly adding a decimal doesn't really change anything, thanks to the Double.valueOf() function
 			if(Calculator.operation == "") Calculator.numI += ".";
 			else Calculator.numII += ".";
 			
@@ -175,30 +186,11 @@ public class ButtonPressed implements ActionListener
 		}
 		else if(e.getSource() == Window.clr)
 		{
-			Calculator.numI = "";
-			Calculator.numII = "";
-			Calculator.operation = "";
-			Window.ansText.setText("");
-			Calculator.sqrt = false;
+			Calculator.clear(false);
 		}
 		else if(e.getSource() == Window.back)
 		{
-			String text = Window.ansText.getText();	//For cleanliness
-			
-			if(Calculator.numII.equals("") && Calculator.operation.equals(""))	{
-				//If both are empty then num1 needs to lose a character
-				Calculator.numI = Calculator.numI.substring(0, Calculator.numI.length()-1);
-				Window.ansText.setText(Calculator.numI);
-			}
-			else if(Calculator.numII.equals("") && !Calculator.operation.equals("")) {
-				//Delete operation because num1 and operation are only things available
-				Calculator.operation = "";
-				Window.ansText.setText(text.substring(0, text.length() - 3));	//Delete the 2 spaces and symbol
-			}
-			else if(!Calculator.numII.equals("")) {
-				Calculator.numII = Calculator.numII.substring(0, Calculator.numII.length()-1);
-				Window.ansText.setText(text.substring(0, text.length()-1));
-			}
+			Calculator.backSpace();
 		}
 		else if(e.getSource() == Window.lParenth)
 		{
