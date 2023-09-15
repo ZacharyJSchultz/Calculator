@@ -2,8 +2,12 @@
 
 June 2022 - Present.  
   
-Last updated September 14, 2023
+Last updated September 15, 2023
 
+### Note: This Project is still a Work in Progress
+I am still working on implementing square root and parenthesis functionality, as well as some general QoL/aesthetic changes
+
+<br>
 
 ## Description
 
@@ -29,10 +33,10 @@ Coding all the special cases also proved somewhat challenging (and very time-con
 
 ## Running the Project
 
-To run the project, just double click on the .JAR file! But make sure you have Java installed (if you don't, you can install it from here: https://www.java.com/en/download/help/download_options.html)
+To run the project, just double click on the .JAR file! But make sure you have Java installed (if you don't, you can install it from here: https://www.java.com/en/download/help/download_options.html
 
-### License
+## License
 
-The license is GNU GPL license. For more info look at license.txt.
+The license is GNU GPL license. For more info see license.txt.
 
 ## Enjoy!
