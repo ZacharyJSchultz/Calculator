@@ -1,6 +1,7 @@
 # Calculator Project
 
-June 2022 - Present
+June 2022 - Present.  
+  
 Last updated September 14, 2023
 
 
@@ -12,9 +13,7 @@ This is a calculator project designed to simulate any a basic computer calculato
 I created my own Window class, using JFrames, JButtons, and JTextAreas to create the GUI. I also designed two Listener classes, KeyInput.java and ButtonPressed.java, to read input from the keyboard and buttons respectively.
 
 ### The Calculator Class
-The Calculator class is the primary class that contains both the Calculator object and the main method. It contains classes and variables required for the calculator to function, such as variables for the two numbers and the operation. The two number variables (the ones that the user enter, numI and numII) are both Strings, because calculators don't function logically when it comes to inputting numbers.
-
-	For example, if you enter 4 and then 2 in a calculator, you get 42, but 4 + 2 = 6.
+The Calculator class is the primary class that contains both the Calculator object and the main method. It contains classes and variables required for the calculator to function, such as variables for the two numbers and the operation. The two number variables (the ones that the user enter, numI and numII) are both Strings because calculators append digits to the end of numbers, and strings are a lot better at appending than ints or doubles.
 	
 I could have kept track of the place in the number and multiplied that by 10^location (so tens place is num * 10^1, thousands place is 2nd position (num * 10^2), etc. However, I thought it would be easier to use Strings and then rely on the Double.valueOf() function to convert the strings into Doubles. The solution variable (total) is a double however, because it is only used in the solve() function after converting the Strings to doubles.
 
