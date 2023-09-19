@@ -33,7 +33,11 @@ Coding all the special cases also proved somewhat challenging (and very time-con
 
 ## Running the Project
 
-To run the project, just double click on the .JAR file! But make sure you have Java installed (if you don't, you can install it from here: https://www.java.com/en/download/help/download_options.html
+To run the project, just double click on the .JAR file! But make sure you have Java installed (if you don't, you can install it from here: https://www.java.com/en/download/help/download_options.html).
+
+If that doesn't work, you can also navigate to the area the file is stored in a Terminal and run:
+<br>
+	`java -jar Calculator.jar`
 
 ## License
 
